@@ -68,7 +68,7 @@ The site is deployed [here.](https://pazoraf.github.io/Password-Generator-Using-
 ![Usage Generate Password](/images/usage3.png)
 
 
-![Usage Generated Password](/images/Usage4.png)
+![Usage Generated Password](/images/usage4.png)
 
 
 
