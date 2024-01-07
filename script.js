@@ -87,14 +87,43 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
+
+var selectedCharacters = [];
+
 var passwordLength = prompt("How many characters should your password consist of?");
 while (passwordLength<8 || passwordLength >128){
   passwordLength = prompt("Your password needs to be between 8 and 128 characters")
 }
 
+var incSpecial = confirm("Do you want to include special characters?")
+var incNumeric = confirm("Do you want to include numeric characters?")
+var incLower = confirm("Do you want to include lowercase characters?")
+var incUpper = confirm("Do you want to include uppercase characters?")
+
+
+
 // Function to prompt user for password options
-function getPasswordOptions() {
-  
+function getPasswordOptions(arr) {
+  selectedCharacters.push(...arr);
+}
+while (incSpecial===false && incNumeric===false && incLower===false && incUpper===false){
+  alert("You need to include at least one character type!")
+  incSpecial = confirm("Do you want to include special characters?")
+  incNumeric = confirm("Do you want to include numeric characters?")
+  incLower = confirm("Do you want to include lowercase characters?")
+  incUpper = confirm("Do you want to include uppercase characters?")
+}
+if (incSpecial===true){
+  getPasswordOptions(specialCharacters)
+}
+if (incNumeric===true){
+  getPasswordOptions(numericCharacters)
+}
+if (incLower===true){
+  getPasswordOptions(lowerCasedCharacters)
+}
+if (incUpper===true){
+  getPasswordOptions(upperCasedCharacters)
 }
 
 // Function for getting a random element from an array
@@ -121,4 +150,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
-console.log(getRandom(specialCharacters), getRandom(numericCharacters), getRandom(lowerCasedCharacters), getRandom(upperCasedCharacters), passwordLength)
+console.log(selectedCharacters)
