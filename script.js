@@ -132,8 +132,11 @@ function getRandom(arr) {
 }
 
 // Function to generate password with user input
-function generatePassword() {
-
+function generatePassword(l) {
+  pswd= "";
+  for(i=0;i<l;i++){
+    pswd += getRandom(selectedCharacters)
+  } return pswd
 }
 
 // Get references to the #generate element
@@ -149,5 +152,5 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-
-console.log(selectedCharacters)
+generatePassword(passwordLength)
+console.log(pswd)
