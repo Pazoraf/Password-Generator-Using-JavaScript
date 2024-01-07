@@ -87,10 +87,14 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
+var passwordLength = prompt("How many characters should your password consist of?");
+while (passwordLength<8 || passwordLength >128){
+  passwordLength = prompt("Your password needs to be between 8 and 128 characters")
+}
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  
 }
 
 // Function for getting a random element from an array
@@ -117,4 +121,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
-console.log(getRandom(specialCharacters), getRandom(numericCharacters), getRandom(lowerCasedCharacters), getRandom(upperCasedCharacters))
+console.log(getRandom(specialCharacters), getRandom(numericCharacters), getRandom(lowerCasedCharacters), getRandom(upperCasedCharacters), passwordLength)
