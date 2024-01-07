@@ -95,34 +95,35 @@ while (passwordLength<8 || passwordLength >128){
   passwordLength = prompt("Your password needs to be between 8 and 128 characters")
 }
 
-var incSpecial = confirm("Do you want to include special characters?")
-var incNumeric = confirm("Do you want to include numeric characters?")
-var incLower = confirm("Do you want to include lowercase characters?")
-var incUpper = confirm("Do you want to include uppercase characters?")
-
+var includes = {
+  special: confirm("Do you want to include special characters?"),
+  numeric: confirm("Do you want to include numeric characters?"),
+  lowerCase: confirm("Do you want to include lowercase characters?"),
+  upperCase: confirm("Do you want to include uppercase characters?"),
+}
 
 
 // Function to prompt user for password options
 function getPasswordOptions(arr) {
   selectedCharacters.push(...arr);
 }
-while (incSpecial===false && incNumeric===false && incLower===false && incUpper===false){
+while (Object.values(includes).every((v) => v === false)){
   alert("You need to include at least one character type!")
-  incSpecial = confirm("Do you want to include special characters?")
-  incNumeric = confirm("Do you want to include numeric characters?")
-  incLower = confirm("Do you want to include lowercase characters?")
-  incUpper = confirm("Do you want to include uppercase characters?")
+  includes.special = confirm("Do you want to include special characters?")
+  includes.numeric = confirm("Do you want to include numeric characters?")
+  includes.lowerCase = confirm("Do you want to include lowercase characters?")
+  includes.upperCase = confirm("Do you want to include uppercase characters?")
 }
-if (incSpecial===true){
+if (includes.special===true){
   getPasswordOptions(specialCharacters)
 }
-if (incNumeric===true){
+if (includes.numeric===true){
   getPasswordOptions(numericCharacters)
 }
-if (incLower===true){
+if (includes.lowerCase===true){
   getPasswordOptions(lowerCasedCharacters)
 }
-if (incUpper===true){
+if (includes.upperCase===true){
   getPasswordOptions(upperCasedCharacters)
 }
 
@@ -144,7 +145,7 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var password = generatePassword(passwordLength);
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -152,5 +153,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-generatePassword(passwordLength)
-console.log(pswd)
