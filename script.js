@@ -87,6 +87,7 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
+
 // Empty array to store selected characters to be used
 var selectedCharacters = [];
 
